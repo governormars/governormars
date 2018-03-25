@@ -262,6 +262,157 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/25/C-初探之引用和指针/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Governormars">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/25/C-初探之引用和指针/" itemprop="url">C++初探之引用和指针</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-25T23:36:06+08:00">
+                2018-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>C++primer中对 <strong>对象</strong>的定义：<strong>对象</strong>是指一块能存储数据并具有某种类型的内存空间<br>一个<strong>对象</strong>a，它有<strong>值</strong>和<strong>地址&amp;a</strong>，运行程序时，计算机会为该对象分配存储空间，来存储该对象的值，我们通过该对象的地址，来访问存储空间中的值。</p>
+<p><strong>指针</strong>p也是<strong>对象</strong>，它同样有地址&amp;p和存储的值p，只不过，<strong>p存储的数据类型是数据的地址</strong>。如果我们要以p中存储的数据为地址，来访问对象的值，则要在p前加解引用操作符”<em>“,即</em>p。</p>
+<p>对象有常量（const）和变量之分，既然指针本身是对象，那么指针所存储的地址也有常量和变量之分，常量指针是指，指针这个对象所存储的地址是不可以改变的，而指向常量的指针的意思是，不能通过该指针来改变这个指针所指向的对象。</p>
+<p>我们可以把引用理解成变量的别名。定义一个引用的时候，程序把该引用和它的初始值绑定在一起，而不是拷贝它。计算机必须<strong>在声明r的同时就要对它初始化</strong>，并且，<strong>r一经声明，就不可以再和其它对象绑定在一起了。</strong></p>
+<p>注意：</p>
+<blockquote>
+<p>1) 引用必须被初始化，指针不必。<br>2) 引用初始化以后不能被改变，指针可以改变所指的对象。<br>3) 不存在指向空值的引用，但是存在指向空值的指针。</p>
+</blockquote>
+<p>实例:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a, b, *p, &amp;r=a;</span><br><span class="line">r = <span class="number">3</span>;<span class="comment">//对，等价于a = 3</span></span><br><span class="line"><span class="keyword">int</span> &amp;s;<span class="comment">//错，因为引用要初始化</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun2</span><span class="params">(<span class="keyword">int</span> &amp;s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     <span class="comment">//对，在这里，我们就不用担心s是否为空（因为调用函数一定会传入参数来初始化引用</span></span><br><span class="line">&#125;</span><br><span class="line">p = &amp;a;<span class="comment">//对,p现在存储a的地址,即p指向a</span></span><br><span class="line">*p=<span class="number">4</span>;<span class="comment">//正确：p中存的是a的地址，对a所对应的存储空间存入值4</span></span><br><span class="line">p=&amp;b<span class="comment">//正确：p可以多次赋值，p存储b的地址</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/24/机器学习术语整理（持续更新）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -358,7 +509,7 @@
             <blockquote>
 <p>参考吴恩达机器学习教程的个人总结，持续更新。</p>
 </blockquote>
-<p><strong>监督学习(Supervised Learning)</strong>学习<u>给定标签</u>的数据集，比如说有一组病人，给出他们的详细资料，将他们是否已确诊癌症作为标签，然后预测一名（其他的）病人是否会患有癌症，就是一种典型的监督学习。监督学习中也有不同的分类，如果我们训练的结果是得癌症和不得癌症之类<u>离散的类型</u>，则称为<strong>分类（Classification）</strong>;如果只有两种类型的话可以进一步称为<strong>二分类（Binary Classification）</strong>；如果我们目标是预测出一个<u>连续</u>的输出值，则称为<strong>回归（Regression）</strong>。</p>
+<p><strong>监督学习(Supervised Learning)</strong>学习<u><em>给定标签</em></u>的数据集，比如说有一组病人，给出他们的详细资料，将他们是否已确诊癌症作为标签，然后预测一名（其他的）病人是否会患有癌症，就是一种典型的监督学习。监督学习中也有不同的分类，如果我们训练的结果是得癌症和不得癌症之类<u><em>离散</em></u>的类型，则称为<strong>分类（Classification）</strong>;如果只有两种类型的话可以进一步称为<strong>二分类（Binary Classification）</strong>；如果我们目标是预测出一个<u><em>连续</em></u>的输出值，则称为<strong>回归（Regression）</strong>。</p>
 
           
         
@@ -595,7 +746,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -606,7 +757,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
